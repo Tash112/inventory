@@ -1,0 +1,40 @@
+.main {
+    background: #fff;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 10px 0.6px #aaa;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+    margin-left: 3rem;
+    gap: 1.5rem;
+}
+.logo h2{
+    color: #ff7200;
+}
+
+ul{
+    display: flex;
+    margin-right: 3rem;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+ul li{
+    list-style: none;
+    font-size: large;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.icon{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1rem;
+    font-size: 20px;
+}

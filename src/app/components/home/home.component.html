@@ -1,0 +1,87 @@
+<app-navbar/>
+<div class="main">
+    <div class="section1">
+        <div class="left">
+            <h1>Welcome to <br> Our Fruits Shop</h1>
+            <p>Thre are many variations of passages of lorem ipsum available, but <br> the majority have alteration in some form, by injected <br> humour, or randomised words which don't look even slightly <br> believable</p>
+            <div class="buttons">
+                <button>shop now</button>
+                <button routerLink="/contact-us">contact us</button>
+            </div>
+        </div>
+        <div class="right">
+            <img src="assets/image1.png" alt="">
+        </div>
+    </div>
+    <div class="section2" id="products">
+        <h1>welcome to our products</h1> 
+        <div class="filter">
+            <select name="products" id="productSelect">
+                <option value="product1">Product 1</option>
+                <option value="product2">Product 2</option>
+                <option value="product3">Product 3</option>
+                <option value="product4">Product 4</option>
+                <option value="product5">Product 5</option>
+                <option value="product6">Product 6</option>
+                <option value="product7">Product 7</option>
+                <option value="product8">Product 8</option>
+                <option value="product9">Product 9</option>
+                <option value="product10">Product 10</option>
+            </select>
+            <input type="search" name="" id="" placeholder="search products here...">
+              
+        </div>
+        <div class="cards">
+            <div class="card" *ngFor="let product of products">
+                <img [src]="product.image" alt="">
+                <div class="content">
+                    <p>{{product.productName}}</p>
+                    <p>{{product.price | currency}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><app-navbar/>
+<div class="main">
+    <div class="section1">
+        <div class="left">
+            <h1>Welcome to <br> Our Fruits Shop</h1>
+            <p>Thre are many variations of passages of lorem ipsum available, but <br> the majority have alteration in some form, by injected <br> humour, or randomised words which don't look even slightly <br> believable</p>
+            <div class="buttons">
+                <button>shop now</button>
+                <button routerLink="/contact-us">contact us</button>
+            </div>
+        </div>
+        <div class="right">
+            <img src="assets/image1.png" alt="">
+        </div>
+    </div>
+    <div class="section2" id="products">
+        <h1>welcome to our products</h1> 
+        <div class="filter">
+            <select name="products" id="productSelect">
+                <option value="product1">Product 1</option>
+                <option value="product2">Product 2</option>
+                <option value="product3">Product 3</option>
+                <option value="product4">Product 4</option>
+                <option value="product5">Product 5</option>
+                <option value="product6">Product 6</option>
+                <option value="product7">Product 7</option>
+                <option value="product8">Product 8</option>
+                <option value="product9">Product 9</option>
+                <option value="product10">Product 10</option>
+            </select>
+            <input type="search" name="" id="" placeholder="search products here...">
+              
+        </div>
+        <div class="cards">
+            <div class="card" *ngFor="let product of products">
+                <img [src]="product.image" alt="">
+                <div class="content">
+                    <p>{{product.productName}}</p>
+                    <p>{{product.price | currency}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

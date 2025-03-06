@@ -1,0 +1,18 @@
+.contact-info i {
+    font-size: 2rem;
+    color: #007bff;
+  }
+  .contact-info p {
+    font-size: 1.1rem;
+  }
+  .form-section {
+    background-color: #f8f9fa;
+    padding: 50px 0;
+  }
+  .form-section .form-group label {
+    font-weight: bold;
+  }
+  .form-section .form-group input, .form-section .form-group textarea {
+    border-radius: 5px;
+    box-shadow: none;
+  }

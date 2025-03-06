@@ -1,0 +1,25 @@
+<app-navbar/>
+<div class="main">
+    <form action="">
+        <h2>Sign in to your account</h2>
+        <div class="logincontainer">
+            <div class="input">
+                <label for="">email:</label>
+                <input type="text" placeholder="example@gmail.com">
+            </div>
+            <div class="input">
+                <label for="">password:</label>
+                <input type="password"  placeholder="enter your password">
+            </div>
+            <span class="reset">
+                <p>forgot password</p> 
+                <p routerLink="/reset">reset</p>
+            </span>
+            <button class="btn-login">Login</button>
+            <span class="link">
+                <p>don't have account?</p>
+                <p routerLink="/sign-up">sign-up</p>
+            </span>
+        </div>
+    </form>
+</div>

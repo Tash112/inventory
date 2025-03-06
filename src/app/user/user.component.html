@@ -1,0 +1,33 @@
+<div class="main">
+    <div class="sidebar">
+        <div class="logo">
+            <img src="/assets/image1.png" alt="">
+        </div>
+        <ul>
+            <li routerLink="/manage-users/dashboard">dashboard</li>
+            <li routerLink="/user/history">history</li>
+            <li routerLink="/user/orders">orders</li>
+            <li routerLink="/user/profile">profile</li>
+            <li routerLink="/login">logout</li>
+        </ul>
+    </div>
+    <div class="mainbar">
+        <div class="topbar shadow-sm">
+            <h2>Welcome user!</h2>
+            <div class="searchbox ">
+                <input type="text" placeholder="search.....">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="profile">
+                <img src="/assets/image1.png" alt="">
+                <div class="info">
+                    <p>Phelix</p>
+                    <p>Otieno</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-area shadow-lg">
+            <router-outlet/>
+        </div>
+    </div>
+</div>

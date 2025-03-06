@@ -1,0 +1,16 @@
+<app-navbar/>
+<div class="service-page">
+    <h1>Our Services</h1>
+  
+    <!-- Service Section -->
+    <section class="service-section">
+      <!-- Iterate over services using ngFor directive -->
+      <div *ngFor="let service of services" class="service-card">
+        <img [src]="service.icon" alt="{{ service.title }} Icon" class="service-icon">
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+        <button class="learn-more-btn" (click)="onLearnMore(service.link)">Learn More</button>
+      </div>
+    </section>
+  </div>
+  

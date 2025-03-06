@@ -1,0 +1,35 @@
+<div class="main">
+    <div class="sidebar">
+        <div class="logo">
+            <img src="/assets/image1.png" alt="">
+        </div>
+        <ul>
+            <li routerLink="/admin/dashboard">dashboard</li>
+            <li routerLink="/admin/manage-categories">category</li>
+            <li routerLink="/admin/manage-products">products</li>
+            <li routerLink="/admin/orders">orders</li>
+            <li routerLink="/admin/manage-users">users</li>
+            <li routerLink="/admin/profile">profile</li>
+            <li routerLink="/login">logout</li>
+        </ul>
+    </div>
+    <div class="mainbar">
+        <div class="topbar shadow-sm">
+            <h2>Welcome Admin!</h2>
+            <div class="searchbox ">
+                <input type="text" placeholder="search.....">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="profile">
+                <img src="/assets/image1.png" alt="">
+                <div class="info">
+                    <p>Phelix</p>
+                    <p>Otieno</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-area shadow-lg">
+            <router-outlet/>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="container mt-4">
+    <!-- Cards Section -->
+      <div class="cards" >
+        <div class="card shadow-lg" *ngFor="let item of cardItems">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.quantity }}</p>
+        </div>
+      </div>
+
+  
+    <!-- Monthly Sales Section -->
+    <div class="card mt-5 shadow-lg">
+      <h3 class="card-header text-center">Monthly Sales</h3>
+      <div class="card-body">
+  
+        <!-- Main Monthly Sales Table -->
+        <table class="table table-bordered table-striped table-responsive">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Sales Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let sale of monthlySales">
+              <td>{{ sale.month }}</td>
+              <td>{{ sale.amount | currency:'KES':'symbol':'1.0-0':'en-KE' }}</td>
+            </tr>
+          </tbody>
+        </table>
+  
+        <!-- Sales by Region Table -->
+         <div class="p-3"></div>
+        <h4>Sales by Region</h4>
+        <table class="table table-bordered table-striped table-responsive">
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>Sales Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let region of salesByRegion">
+              <td>{{ region.region }}</td>
+              <td>{{ region.sales | currency:'KES':'symbol':'1.0-0':'en-KE' }}</td>
+            </tr>
+          </tbody>
+        </table>
+  
+        <!-- Sales by Category Table -->
+         <div class="p-3"></div>
+        <h4>Sales by Category</h4>
+        <table class="table table-bordered table-striped table-responsive">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Sales Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let category of salesByCategory">
+              <td>{{ category.category }}</td>
+              <td>{{ category.sales | currency:'KES':'symbol':'1.0-0':'en-KE' }}</td>
+            </tr>
+          </tbody>
+        </table>
+  
+      </div>
+    </div>
+</div>
+  

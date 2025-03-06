@@ -1,0 +1,81 @@
+<div class="container mt-5">
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ successMessage }}
+        <button type="button" class="btn-close" (click)="successMessage = null" aria-label="Close"></button>
+      </div>
+    <h2 class="text-center">Manage Categories</h2>
+    
+    <!-- Add Category Button -->
+    <button class="btn btn-primary mb-4" (click)="openCategoryModal()">Add Category</button>
+  
+    <!-- Category Table -->
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categories; let i = index">
+          <td>{{ category.name }}</td>
+          <td>{{ category.description }}</td>
+          <td>
+            <!-- Edit Button -->
+            <button class="btn btn-warning btn-sm" (click)="openCategoryModal(category)">
+              <i class="fas fa-edit"></i>
+            </button>
+            <!-- Delete Button -->
+            <button class="btn btn-danger btn-sm" (click)="confirmDelete(category.id)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    
+  
+    <!-- Category Modal (Add / Edit) -->
+    <div *ngIf="isCategoryModalVisible" class="modal-backdrop" (click)="closeCategoryModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ isEditing ? 'Edit' : 'Add' }} Category</h5>
+          <button type="button" class="close" (click)="closeCategoryModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)">
+            <div class="mb-3">
+              <label for="categoryName" class="form-label">Category Name</label>
+              <input type="text" class="form-control" id="categoryName" [(ngModel)]="categoryData.name" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="categoryDescription" class="form-label">Category Description</label>
+              <textarea class="form-control" id="categoryDescription" [(ngModel)]="categoryData.description" name="description" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">{{ isEditing ? 'Update' : 'Save' }}</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Delete Confirmation Modal -->
+    <div *ngIf="confirmDeleteModalVisible" class="modal-backdrop" (click)="closeDeleteConfirmModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirm Deletion</h5>
+          <button type="button" class="close" (click)="closeDeleteConfirmModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this category?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeDeleteConfirmModal()">Cancel</button>
+          <button type="button" class="btn btn-danger" (click)="deleteCategory()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

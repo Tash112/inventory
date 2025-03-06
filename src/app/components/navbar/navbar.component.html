@@ -1,16 +1,49 @@
-<div class="main">
-    <div class="logo">
-        <h2>Fruity</h2>
-        <img src="assets/logo.png" alt="">
+<nav class="navbar navbar-expand-lg navbar-primary bg-primary shadow-lg">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Smart Inventory</a>
+
+    <!-- Toggler for small screens -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a routerLink="/home" class="nav-link active" aria-current="page">Home</a>
+        </li>
+        <li class="nav-item">
+          <!-- Link to About Component -->
+          <a routerLink="/about" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/services" class="nav-link">Services</a>
+
+        </li>
+        <li class="nav-item">
+          <a routerLink="/contact" class="nav-link">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/login" class="nav-link">
+            <i class="fas fa-user text-light"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <i routerLink="/cart" class="fas fa-shopping-cart text-light"></i>
+          </a>
+        </li>
+      </ul>
     </div>
-    <ul class="text-secondary">
-        <li>home</li>
-        <li>service</li>
-        <li>about</li>
-        <li routerLink="/contact-us">contact us</li>
-        <div class="icon">
-            <i class="fas fa-shopping-cart"></i>
-            <i routerLink="/login" class="fas fa-user"></i>
-        </div>
-    </ul>
-</div>
+  </div>
+</nav>

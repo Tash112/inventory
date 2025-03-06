@@ -18,16 +18,6 @@ export class HomeComponent {
     {image: 'assets/image2.png', productName: 'orange', price: '1500'},
     {image: 'assets/image2.png', productName: 'orange', price: '1500'},
     {image: 'assets/image2.png', productName: 'orange', price: '1500'},
-    {image: 'assets/image2.png', productName: 'orange', price: '1500'},
-    {image: 'assets/image2.png', productName: 'orange', price: '1500'},
-    {image: 'assets/image2.png', productName: 'orange', price: '1500'},
-    {image: 'assets/image2.png', productName: 'orange', price: '1500'},
-    {image: 'assets/image2.png', productName: 'orange', price: '1500'},
-    {image: 'assets/image2.png', productName: 'orange', price: '1500'},
-    {image: 'assets/image2.png', productName: 'orange', price: '1500'},
-    {image: 'assets/image2.png', productName: 'orange', price: '1500'},
-    {image: 'assets/image2.png', productName: 'orange', price: '1500'},
-    {image: 'assets/image2.png', productName: 'orange', price: '1500'},
-    {image: 'assets/image2.png', productName: 'orange', price: '1500'},
+  
   ]
 }

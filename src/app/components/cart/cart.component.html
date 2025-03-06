@@ -1,0 +1,9 @@
+<app-navbar/>
+
+<div class="cart-icon-container">
+    <button class="cart-button" (click)="viewCart()">
+      <i class="fas fa-shopping-cart"></i> <!-- Font Awesome Shopping Cart Icon -->
+      <span class="item-count" *ngIf="itemCount > 0">{{ itemCount }}</span>
+    </button>
+  </div>
+  

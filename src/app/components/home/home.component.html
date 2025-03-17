@@ -9,8 +9,9 @@
         There are many variations of passages of Lorem Ipsum available, but the majority have alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
       </p>
       <div class="d-flex gap-3 justify-content-center justify-content-md-start">
-        <button class="btn btn-primary btn-lg"><a href="#">Shop Now</a></button>
-        <button class="btn btn-outline-dark btn-lg" routerLink="/contact">Contact Us</button>
+        <button class="btn btn-primary btn-lg" (click)="scrollToProducts()">Shop Now</button>
+        <button routerLink="/contact"  class="btn btn-outline-dark btn-lg">Contact Us</button>
+
       </div>
     </div>
     <div class="col-md-6 text-center">
@@ -30,22 +31,21 @@
           <option value="product4">Product 4</option>
           <option value="product5">Product 5</option>
           <option value="product6">Product 6</option>
-          <option value="product7">Product 7</option>
-          <option value="product8">Product 8</option>
-          <option value="product9">Product 9</option>
-          <option value="product10">Product 10</option>
         </select>
         <input type="search" class="form-control w-25" placeholder="Search products here...">
       </div>
     </div>
+
+    <!-- Display products -->
     <div class="col-12">
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-5 g-4">
         <div class="col" *ngFor="let product of products">
-          <div class="card h-100 shadow-lg">
+          <!-- Add the click event for the card to navigate to the product detail page -->
+          <div class="card h-100 shadow-lg" (click)="viewProductDetail(product.id)" style="cursor: pointer;">
             <div class="card-img-container">
               <img [src]="product.image" class="card-img-top" alt="Product Image">
             </div>
-            <div class="card-body d-flex  justify-content-between align-items-center">
+            <div class="card-body d-flex justify-content-between align-items-center">
               <p class="card-text fw-bold text-primary">{{ product.productName }}</p>
               <p class="card-text fw-bold text-info">{{ product.price | currency:'KES':'symbol':'1.2-2' }}</p>
             </div>

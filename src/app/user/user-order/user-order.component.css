@@ -1,0 +1,65 @@
+/* Order History Table */
+.table th, .table td {
+    text-align: center;
+  }
+  
+  .table .btn {
+    margin: 0 5px;
+  }
+  
+  .btn-sm {
+    padding: 5px 10px;
+  }
+  
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+  }
+  
+  .modal-content {
+    position: relative;
+    margin: 10% auto;
+    padding: 20px;
+    background-color:white;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    z-index: 1050;
+  }
+  
+  .modal-header, .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-footer button {
+    margin-left: 10px;
+  }
+  
+  .modal-body textarea {
+    width: 100%;
+    height: 120px;
+  }
+  
+  .modal-header h5 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+  
+  h2 {
+    margin-bottom: 30px;
+  }
+  
+  /* Success Message */
+  .alert-dismissible .btn-close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  

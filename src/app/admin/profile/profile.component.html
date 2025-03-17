@@ -1,91 +1,93 @@
 <div class="container mt-5">
-    <!-- Success Message -->
-    <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
-      {{ successMessage }}
-      <button type="button" class="btn-close" (click)="successMessage = null" aria-label="Close"></button>
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ successMessage }}
+    <button type="button" class="btn-close" (click)="successMessage = null" aria-label="Close"></button>
+  </div>
+
+  <!-- Profile Icon and Name -->
+  <div class="text-center mb-4">
+    <img [src]="user.profileImage || 'assets/default-profile-icon.png'" alt="Profile Icon" class="rounded-circle" width="150" height="150" />
+    <h3>{{ user.name }}</h3>
+  </div>
+
+  <h2 class="text-center">Manage Profile</h2>
+
+  <!-- Profile Information -->
+  <div class="card">
+    <div class="card-header">
+      <h4>Profile Information</h4>
     </div>
-  
-    <h2 class="text-center">Manage Profile</h2>
-  
-    <!-- Profile Information -->
-    <div class="profile-info mb-4">
-      <div class="row">
-        <div class="col-md-3 text-center">
-          <img [src]="userProfile.image || 'assets/default-profile.jpg'" alt="Profile Picture" class="img-fluid rounded-circle" width="150">
-          <button class="btn btn-primary mt-3" (click)="triggerImageUpload()">Change Image</button>
-          <input type="file" id="profileImage" (change)="onImageSelected($event)" style="display: none;" />
-        </div>
-        <div class="col-md-9">
-          <h3>{{ userProfile.name }}</h3>
-          <p><strong>Email:</strong> {{ userProfile.email }}</p>
-          <p><strong>Phone:</strong> {{ userProfile.phone }}</p>
-          <p><strong>Role:</strong> {{ userProfile.role }}</p>
-          <button class="btn btn-warning" (click)="openEditProfileModal()">Edit Profile</button>
-        </div>
+    <div class="card-body">
+      <p><strong>Name:</strong> {{ user.name }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Phone:</strong> {{ user.phone }}</p>
+      <button class="btn btn-primary" (click)="editProfile()">Edit Profile</button>
+      <button class="btn btn-warning" (click)="changePassword()">Change Password</button>
+
+  <!-- Edit Profile Modal -->
+  <div *ngIf="isEditProfileModalVisible" class="modal-backdrop" (click)="closeEditProfileModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Profile</h5>
+        <button type="button" class="close" (click)="closeEditProfileModal()">&times;</button>
       </div>
-    </div>
-  
-    <!-- Edit Profile Modal -->
-    <div *ngIf="isEditProfileModalVisible" class="modal fade show" tabindex="-1" style="display: block;" (click)="closeEditProfileModal()">
-      <div class="modal-dialog" (click)="$event.stopPropagation()">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Edit Profile</h5>
-            <button type="button" class="btn-close" (click)="closeEditProfileModal()"></button>
+      <div class="modal-body">
+        <form (ngSubmit)="updateProfile()">
+          <!-- Profile Image Upload -->
+          <div class="mb-3">
+            <label for="profileImage" class="form-label">Profile Image</label>
+            <input type="file" class="form-control" (change)="onFileChange($event)" id="profileImage" />
           </div>
-          <div class="modal-body">
-            <form #editProfileForm="ngForm" (ngSubmit)="onSubmit(editProfileForm)">
-              <div class="mb-3">
-                <label for="profileName" class="form-label">Name</label>
-                <input type="text" class="form-control" id="profileName" [(ngModel)]="userProfile.name" name="name" required>
-              </div>
-              <div class="mb-3">
-                <label for="profileEmail" class="form-label">Email</label>
-                <input type="email" class="form-control" id="profileEmail" [(ngModel)]="userProfile.email" name="email" required>
-              </div>
-              <div class="mb-3">
-                <label for="profilePhone" class="form-label">Phone</label>
-                <input type="tel" class="form-control" id="profilePhone" [(ngModel)]="userProfile.phone" name="phone" required>
-              </div>
-              <button type="submit" class="btn btn-primary">Update Profile</button>
-            </form>
+
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="user.name" name="name" required />
           </div>
-        </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" required />
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="phone" [(ngModel)]="user.phone" name="phone" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Update Profile</button>
+        </form>
       </div>
-    </div>
-  
-    <!-- Change Password Button -->
-    <div class="change-password mt-4">
-      <button class="btn btn-secondary" (click)="openChangePasswordModal()">Change Password</button>
-    </div>
-  
-    <!-- Change Password Modal -->
-    <div *ngIf="isChangePasswordModalVisible" class="modal fade show" tabindex="-1" style="display: block;" (click)="closeChangePasswordModal()">
-      <div class="modal-dialog" (click)="$event.stopPropagation()">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Change Password</h5>
-            <button type="button" class="btn-close" (click)="closeChangePasswordModal()"></button>
-          </div>
-          <div class="modal-body">
-            <form #changePasswordForm="ngForm" (ngSubmit)="onChangePassword(changePasswordForm)">
-              <div class="mb-3">
-                <label for="currentPassword" class="form-label">Current Password</label>
-                <input type="password" class="form-control" id="currentPassword" [(ngModel)]="passwordData.currentPassword" name="currentPassword" required>
-              </div>
-              <div class="mb-3">
-                <label for="newPassword" class="form-label">New Password</label>
-                <input type="password" class="form-control" id="newPassword" [(ngModel)]="passwordData.newPassword" name="newPassword" required>
-              </div>
-              <div class="mb-3">
-                <label for="confirmPassword" class="form-label">Confirm New Password</label>
-                <input type="password" class="form-control" id="confirmPassword" [(ngModel)]="passwordData.confirmPassword" name="confirmPassword" required>
-              </div>
-              <button type="submit" class="btn btn-primary">Update Password</button>
-            </form>
-          </div>
-        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeEditProfileModal()">Close</button>
       </div>
     </div>
   </div>
-  
+
+  <!-- Change Password Modal -->
+  <div *ngIf="isChangePasswordModalVisible" class="modal-backdrop" (click)="closeChangePasswordModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h5 class="modal-title">Change Password</h5>
+        <button type="button" class="close" (click)="closeChangePasswordModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="updatePassword()">
+          <div class="mb-3">
+            <label for="oldPassword" class="form-label">Old Password</label>
+            <input type="password" class="form-control" id="oldPassword" [(ngModel)]="oldPassword" name="oldPassword" required />
+          </div>
+          <div class="mb-3">
+            <label for="newPassword" class="form-label">New Password</label>
+            <input type="password" class="form-control" id="newPassword" [(ngModel)]="newPassword" name="newPassword" required />
+          </div>
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm New Password</label>
+            <input type="password" class="form-control" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Change Password</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeChangePasswordModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

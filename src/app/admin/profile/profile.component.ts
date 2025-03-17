@@ -3,79 +3,105 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-profile',
+  selector: 'app-user-profile',
   standalone:true,
   imports:[CommonModule,FormsModule],
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent {
-onImageSelected($event: Event) {
-throw new Error('Method not implemented.');
-}
-triggerImageUpload() {
-throw new Error('Method not implemented.');
-}
-  // User Profile Data
-  userProfile = {
+  successMessage: string | null = null;
+  user = {
+    profileImage: '',
     name: 'John Doe',
-    email: 'johndoe@example.com',
-    phone: '+123456789',
-    role: 'Manager',
-    image: 'assets/image1.png'
+    email: 'john.doe@example.com',
+    phone: '+254-71-937-0963',
   };
 
-  // Modal visibility flags
   isEditProfileModalVisible = false;
   isChangePasswordModalVisible = false;
+  showAddressDropdown = false;
+  showPaymentDropdown = false;
 
-  // Form data
-  passwordData = {
-    currentPassword: '',
-    newPassword: '',
-    confirmPassword: ''
-  };
+  oldPassword: string = '';
+  newPassword: string = '';
+  confirmPassword: string = '';
 
-  // Success message
-  successMessage: string | null = null;
+  // Toggle dropdown visibility for address and payment
+  toggleDropdown(type: string) {
+    if (type === 'address') {
+      this.showAddressDropdown = !this.showAddressDropdown;
+      this.showPaymentDropdown = false; // Close payment dropdown when address is toggled
+    } else if (type === 'payment') {
+      this.showPaymentDropdown = !this.showPaymentDropdown;
+      this.showAddressDropdown = false; // Close address dropdown when payment is toggled
+    }
+  }
 
-  // Open Edit Profile Modal
-  openEditProfileModal() {
+  // Actions for address management
+  addAddress() {
+    console.log('Adding new address');
+    // Logic to add a new address
+  }
+
+  editAddress() {
+    console.log('Editing address');
+    // Logic to edit address
+  }
+
+  deleteAddress() {
+    console.log('Deleting address');
+    // Logic to delete address
+  }
+
+  // Actions for payment method selection
+  selectPaymentMethod(method: string) {
+    console.log(`Selected payment method: ${method}`);
+    // Logic to handle the selected payment method
+  }
+
+  // Edit profile modal
+  editProfile() {
     this.isEditProfileModalVisible = true;
   }
 
-  // Close Edit Profile Modal
   closeEditProfileModal() {
     this.isEditProfileModalVisible = false;
   }
 
-  // Open Change Password Modal
-  openChangePasswordModal() {
+  updateProfile() {
+    console.log('Updating profile...');
+    // Logic to update profile details
+    this.closeEditProfileModal();
+    this.successMessage = 'Profile updated successfully!';
+    setTimeout(() => {
+      this.successMessage = null;
+    }, 3000);
+  }
+
+  // Change password modal
+  changePassword() {
     this.isChangePasswordModalVisible = true;
   }
 
-  // Close Change Password Modal
   closeChangePasswordModal() {
     this.isChangePasswordModalVisible = false;
   }
 
-  // Submit Profile Form
-  onSubmit(form: any) {
-    if (form.valid) {
-      this.successMessage = 'Profile updated successfully!';
-      // Here, make an API call to update the profile data on the server.
-      this.closeEditProfileModal();
-    }
+  updatePassword() {
+    console.log('Changing password...');
+    // Logic to change password
+    this.closeChangePasswordModal();
+    this.successMessage = 'Password changed successfully!';
+    setTimeout(() => {
+      this.successMessage = null;
+    }, 3000);
   }
 
-  // Submit Change Password Form
-  onChangePassword(form: any) {
-    if (form.valid && this.passwordData.newPassword === this.passwordData.confirmPassword) {
-      this.successMessage = 'Password updated successfully!';
-      // Here, make an API call to update the password on the server.
-      this.closeChangePasswordModal();
-    } else {
-      this.successMessage = 'Passwords do not match.';
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.user.profileImage = URL.createObjectURL(file);
     }
   }
 }

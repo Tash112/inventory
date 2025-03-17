@@ -1,0 +1,57 @@
+.main{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap:  1rem;
+    padding-top: 2rem;
+    min-height: 100vh;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+
+.card {
+  background: #fff;
+  padding: 20px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.notifications {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .notifications li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .notifications .urgent {
+    background-color: #ffcccc; /* Red background for urgent notifications */
+    font-weight: bold;
+  }
+  
+  .table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #f4f4f4;
+  }
+  

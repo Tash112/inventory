@@ -1,1 +1,30 @@
-<p>product-details works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="product-detail-row">
+      <!-- Product Image Section -->
+      <div class="product-image-container">
+        <img [src]="product.image" alt="{{ product.productName }}" />
+      </div>
+  
+      <!-- Product Information Section -->
+      <div class="product-info-container">
+        <h1>{{ product.productName }}</h1>
+        <p>{{ product.description }}</p> <!-- Assuming you have a description property -->
+        <p class="product-price">{{ product.price | currency:'KES':'symbol':'1.2-2' }}</p>
+        
+        <!-- Product Actions (Add to Cart and Go Back buttons) -->
+        <div class="product-actions">
+          <!-- Add to Cart Button -->
+          <button class="btn btn-primary add-to-cart" (click)="addToCart()" [ngClass]="{'btn-block': isMobile}">
+            Add to Cart
+          </button>
+          
+          <!-- Go Back Button -->
+          <button class="btn btn-secondary go-back" (click)="goBack()" [ngClass]="{'btn-block': isMobile}">
+            Go Back
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

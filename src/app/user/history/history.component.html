@@ -1,1 +1,92 @@
-<p>history works!</p>
+<div class="container mt-5">
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ successMessage }}
+      <button type="button" class="btn-close" (click)="successMessage = null" aria-label="Close"></button>
+    </div>
+  
+    <h2 class="text-center">Manage History</h2>
+    
+    <!-- Add History Button -->
+    <button class="btn btn-primary mb-4" (click)="openHistoryModal()">Add History</button>
+  
+    <!-- History Table -->
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Action</th>
+          <th>User</th>
+          <th>Details</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of historyRecords; let i = index">
+          <td>{{ record.action }}</td>
+          <td>{{ record.user }}</td>
+          <td>{{ record.details }}</td>
+          <td>{{ record.date | date }}</td>
+          <td>
+            <!-- View Details Button -->
+            <button class="btn btn-info btn-sm" (click)="viewHistoryDetails(record)">
+              View Details
+            </button>
+            <!-- Edit Button -->
+            <button class="btn btn-warning btn-sm" (click)="openHistoryModal(record)">
+              <i class="fas fa-edit"></i>
+            </button>
+            <!-- Delete Button -->
+            <button class="btn btn-danger btn-sm" (click)="openDeleteHistoryConfirmModal(record.id)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- History Modal (Add / Edit) -->
+    <div *ngIf="isHistoryModalVisible" class="modal-backdrop" (click)="closeHistoryModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ isEditingHistory ? 'Edit' : 'Add' }} History</h5>
+          <button type="button" class="close" (click)="closeHistoryModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form #historyForm="ngForm" (ngSubmit)="onHistorySubmit(historyForm)">
+            <div class="mb-3">
+              <label for="historyAction" class="form-label">Action</label>
+              <input type="text" class="form-control" id="historyAction" [(ngModel)]="historyData.action" name="action" required>
+            </div>
+            <div class="mb-3">
+              <label for="historyUser" class="form-label">User</label>
+              <input type="text" class="form-control" id="historyUser" [(ngModel)]="historyData.user" name="user" required>
+            </div>
+            <div class="mb-3">
+              <label for="historyDetails" class="form-label">Details</label>
+              <textarea class="form-control" id="historyDetails" [(ngModel)]="historyData.details" name="details" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">{{ isEditingHistory ? 'Update' : 'Save' }}</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Delete Confirmation Modal -->
+    <div *ngIf="confirmDeleteHistoryModalVisible" class="modal-backdrop" (click)="closeDeleteHistoryConfirmModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirm Deletion</h5>
+          <button type="button" class="close" (click)="closeDeleteHistoryConfirmModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this history record?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeDeleteHistoryConfirmModal()">Cancel</button>
+          <button type="button" class="btn btn-danger" (click)="deleteHistoryRecord()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

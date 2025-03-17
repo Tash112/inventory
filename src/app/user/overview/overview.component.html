@@ -1,1 +1,40 @@
-<p>overview works!</p>
+
+<!-- Container for user overview -->
+<div class="container mt-4">
+
+
+
+  <!-- Cards Section -->
+  <div class="row">
+    <!-- Total Orders Card -->
+    <div class="cards">
+      <div class="card shadow-lg" *ngFor="let card of cards">
+        <div class="card-body text-center">
+          <h5 class="card-title">{{card.name}}</h5>
+          <p class="card-text">{{card.quantity}}</p>
+        </div>
+      </div>
+     </div>
+
+    <!-- Notifications and Alerts Section -->
+    <div class="col-md-12 mt-4">
+      <div class="card shadow-lg">
+        <h5 class="card-header text-center">Notifications</h5>
+        <div class="card-body">
+          <div *ngIf="notifications && notifications.length > 0">
+            <ul class="list-group">
+              <li *ngFor="let notification of notifications" class="list-group-item">
+                <span>{{ notification.message }}</span>
+                <small class="text-muted float-end">{{ notification.date | date: 'short' }}</small>
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="notifications && notifications.length === 0">
+            <p>No new notifications at the moment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

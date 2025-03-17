@@ -42,6 +42,7 @@ throw new Error('Method not implemented.');
       this.successMessage = `Order ID ${order.id} cannot be completed.`;
     }
   }
+  
 
   // View Customer Details
   viewCustomerDetails(order: any) {
